@@ -1,1 +1,5 @@
 # Plant-Identification-System
+
+MD-CNN: A Multi-Division Convolutional Neural Network-Based Plant Identification System
+
+In this paper, a Multi-Division Convolutional Neural Network (MD-CNN)-based plant recognition system was developed in order to address an agricultural problem related to the classification of plant species. In the proposed system, we divide plant images into equal nxn-sized pieces, and then deep features are extracted for each piece using CNN. For each part of the obtained deep features, effective features were selected using the Principal Component Analysis (PCA) algorithm. Finally, the obtained effective features were combined and classification conducted using the Support Vector Machine (SVM) method. In order to test the performance of the proposed deep-based system, eight different plant datasets were used: Flavia, Swedish, ICL, Foliage, Folio, Flower17, Flower102, and LeafSnap. The results of the proposed model were compared with the state-of-the-art methods, and was shown to provide a superior level of performance compared to the previous studies. 
