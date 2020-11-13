@@ -16,15 +16,16 @@ uzunluk=numel(imds.Labels);
 
 for i=1:uzunluk
     
-    img=readimage(imds,i);
-   
-   img11=imresize(img,[448 448]); 
+    imm=readimage(imds,i);
+    img=onislem (imm); 
+    
+    img11=imresize(img,[448 448]); 
     D11=img11(1:224,1:224,:);
     D22=img11(1:224,225:448,:);
     D33=img11(225:448,1:224,:);
     D44=img11(225:448,225:448,:);
 
-img111=imresize(img,[224 224]); 
+   img111=imresize(img,[224 224]); 
 
    dense_Feats1(:,i) = activations(net1,D11,layer);
    dense_Feats2(:,i) = activations(net1,D22,layer);
