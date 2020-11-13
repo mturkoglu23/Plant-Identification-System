@@ -42,5 +42,8 @@ end
 feat=[dense_Feats1;dense_Feats2;dense_Feats3;dense_Feats4;resnet101_Feats1;resnet101_Feats2;resnet101_Feats3;resnet101_Feats4];
 labels=imds.Labels;
 
+accuracy=pca_svm(feat,labels);
+fprintf('Result : %f \n',accuracy);
+
 
     
