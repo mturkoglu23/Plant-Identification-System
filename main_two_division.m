@@ -40,18 +40,30 @@ for i=1:uzunluk
 end
 
 labels=imds.Labels;
-selected_dense_Feats1=pca_svm(dense_Feats1,labels);
-selected_dense_Feats2=pca_svm(dense_Feats2,labels);
-selected_dense_Feats3=pca_svm(dense_Feats3,labels);
-selected_dense_Feats4=pca_svm(dense_Feats4,labels);
-selected_dense_Feats5=pca_svm(dense_Feats5,labels);
-selected_dense_Feats6=pca_svm(dense_Feats6,labels);
-selected_dense_Feats7=pca_svm(dense_Feats7,labels);
-selected_dense_Feats8=pca_svm(dense_Feats8,labels);
+n=30; // selected features
+selected_dense_Feats1=pca_svm(dense_Feats1,n);
+selected_dense_Feats2=pca_svm(dense_Feats2,n);
+selected_dense_Feats3=pca_svm(dense_Feats3,n);
+selected_dense_Feats4=pca_svm(dense_Feats4,n);
+selected_dense_Feats5=pca_svm(dense_Feats5,n);
+selected_dense_Feats6=pca_svm(dense_Feats6,n);
+selected_dense_Feats7=pca_svm(dense_Feats7,n);
+selected_dense_Feats8=pca_svm(dense_Feats8,n);
+
+% In addition, Link to be used for the PCA method: https://github.com/UMD-ISL/Matlab-Toolbox-for-Dimensionality-Reduction
 
 feat=[selected_dense_Feats1;selected_dense_Feats2;selected_dense_Feats3;selected_dense_Feats4;selected_dense_Feats5;selected_dense_Feats6;selected_dense_Feats7;selected_dense_Feats8];
 
-accuracy=pca_svm(feat,labels);
+t = templateSVM(...
+    'KernelFunction', 'polynomial', ...
+    'PolynomialOrder', 3, ...
+    'KernelScale', 'auto', ...
+    'BoxConstraint', 1, ...
+    'Standardize', true);
+Md1 = fitcecoc(feat,double(labels),'Learners',t,'Coding', 'onevsall');
+CVMd1=crossval(Md1);
+accuracy=1-kfoldLoss(CVMd1);
+
 fprintf('Result : %f \n',accuracy);
 
 
