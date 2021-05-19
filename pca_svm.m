@@ -1,8 +1,8 @@
-function accuracy=pca_svm(feat,label)
+function X1=pca_svm(feat,n)
 
 W=feat;
 sampleMat=W;
-n=200; // Reduction values
+% n // Reduction values
 
 nSamples = size(sampleMat,1);
 nDim = size(sampleMat,2);
@@ -38,17 +38,4 @@ if exist('n','var')
     V5 = V(:,1:n);
 end
 
-
 X1=V5;
-Y1=double(labels);
-
-t = templateSVM(...
-    'KernelFunction', 'polynomial', ...
-    'PolynomialOrder', 3, ...
-    'KernelScale', 'auto', ...
-    'BoxConstraint', 1, ...
-    'Standardize', true);
-Md1 = fitcecoc(X1,Y1,'Learners',t,'Coding', 'onevsall');
-CVMd1=crossval(Md1);
-accuracy=1-kfoldLoss(CVMd1);
-
