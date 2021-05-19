@@ -17,7 +17,7 @@ uzunluk=numel(imds.Labels);
 for i=1:uzunluk
     
     imm=readimage(imds,i);
-    img=onislem (imm); 
+    % img=onislem (imm);  // In some datasets, the cropping process is used in the pre-processing stage.
     
     img11=imresize(img,[448 448]); 
     D11=img11(1:224,1:224,:);
@@ -39,8 +39,17 @@ for i=1:uzunluk
 
 end
 
-feat=[dense_Feats1;dense_Feats2;dense_Feats3;dense_Feats4;resnet101_Feats1;resnet101_Feats2;resnet101_Feats3;resnet101_Feats4];
 labels=imds.Labels;
+selected_dense_Feats1=pca_svm(dense_Feats1,labels);
+selected_dense_Feats2=pca_svm(dense_Feats2,labels);
+selected_dense_Feats3=pca_svm(dense_Feats3,labels);
+selected_dense_Feats4=pca_svm(dense_Feats4,labels);
+selected_dense_Feats5=pca_svm(dense_Feats5,labels);
+selected_dense_Feats6=pca_svm(dense_Feats6,labels);
+selected_dense_Feats7=pca_svm(dense_Feats7,labels);
+selected_dense_Feats8=pca_svm(dense_Feats8,labels);
+
+feat=[selected_dense_Feats1;selected_dense_Feats2;selected_dense_Feats3;selected_dense_Feats4;selected_dense_Feats5;selected_dense_Feats6;selected_dense_Feats7;selected_dense_Feats8];
 
 accuracy=pca_svm(feat,labels);
 fprintf('Result : %f \n',accuracy);
