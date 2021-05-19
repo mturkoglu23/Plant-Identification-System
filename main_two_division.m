@@ -45,14 +45,14 @@ selected_dense_Feats1=pca_method(dense_Feats1,n);
 selected_dense_Feats2=pca_method(dense_Feats2,n);
 selected_dense_Feats3=pca_method(dense_Feats3,n);
 selected_dense_Feats4=pca_method(dense_Feats4,n);
-selected_dense_Feats5=pca_method(dense_Feats5,n);
-selected_dense_Feats6=pca_method(dense_Feats6,n);
-selected_dense_Feats7=pca_method(dense_Feats7,n);
-selected_dense_Feats8=pca_method(dense_Feats8,n);
+selected_resnet101_Feats1=pca_method(resnet101_Feats1,n);
+selected_resnet101_Feats2=pca_method(resnet101_Feats2,n);
+selected_resnet101_Feats3=pca_method(resnet101_Feats3,n);
+selected_resnet101_Feats4=pca_method(resnet101_Feats4,n);
 
 % In addition, Link to be used for the PCA method: https://github.com/UMD-ISL/Matlab-Toolbox-for-Dimensionality-Reduction
 
-feat=[selected_dense_Feats1;selected_dense_Feats2;selected_dense_Feats3;selected_dense_Feats4;selected_dense_Feats5;selected_dense_Feats6;selected_dense_Feats7;selected_dense_Feats8];
+feat=[selected_dense_Feats1;selected_dense_Feats2;selected_dense_Feats3;selected_dense_Feats4;selected_resnet101_Feats1;selected_resnet101_Feats2;selected_resnet101_Feats3;selected_resnet101_Feats4];
 
 t = templateSVM(...
     'KernelFunction', 'polynomial', ...
@@ -65,6 +65,3 @@ CVMd1=crossval(Md1);
 accuracy=1-kfoldLoss(CVMd1);
 
 fprintf('Result : %f \n',accuracy);
-
-
-    
