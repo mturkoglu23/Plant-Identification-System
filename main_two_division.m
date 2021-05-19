@@ -41,14 +41,14 @@ end
 
 labels=imds.Labels;
 n=30; // selected features
-selected_dense_Feats1=pca_svm(dense_Feats1,n);
-selected_dense_Feats2=pca_svm(dense_Feats2,n);
-selected_dense_Feats3=pca_svm(dense_Feats3,n);
-selected_dense_Feats4=pca_svm(dense_Feats4,n);
-selected_dense_Feats5=pca_svm(dense_Feats5,n);
-selected_dense_Feats6=pca_svm(dense_Feats6,n);
-selected_dense_Feats7=pca_svm(dense_Feats7,n);
-selected_dense_Feats8=pca_svm(dense_Feats8,n);
+selected_dense_Feats1=pca_method(dense_Feats1,n);
+selected_dense_Feats2=pca_method(dense_Feats2,n);
+selected_dense_Feats3=pca_method(dense_Feats3,n);
+selected_dense_Feats4=pca_method(dense_Feats4,n);
+selected_dense_Feats5=pca_method(dense_Feats5,n);
+selected_dense_Feats6=pca_method(dense_Feats6,n);
+selected_dense_Feats7=pca_method(dense_Feats7,n);
+selected_dense_Feats8=pca_method(dense_Feats8,n);
 
 % In addition, Link to be used for the PCA method: https://github.com/UMD-ISL/Matlab-Toolbox-for-Dimensionality-Reduction
 
